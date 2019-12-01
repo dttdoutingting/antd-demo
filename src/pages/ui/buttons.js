@@ -56,7 +56,7 @@ class Butons extends Component {
             关闭
           </Button>
         </Card>
-        <Card title="按钮组">
+        <Card title="按钮组" style={{ marginBottom: '10px' }}>
           <Button.Group>
             <Button type="primary" icon="left">
               返回
