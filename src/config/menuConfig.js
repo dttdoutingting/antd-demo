@@ -17,7 +17,7 @@ const menuList = [
       },
       {
         title: 'Loading',
-        key: '/admin/ui/load'
+        key: '/admin/ui/loadings'
       },
       {
         title: '表格',
