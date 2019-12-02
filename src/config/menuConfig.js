@@ -52,24 +52,22 @@ const menuList = [
       {
         title: '注册',
         key: '/admin/form/reg'
-      },
-      {
-        title: 'Loading',
-        key: '/admin/form/load'
-      },
-      {
-        title: '表格',
-        key: '/admin/form/table'
-      },
-      {
-        title: '图表',
-        key: '/admin/form/chart'
       }
     ]
   },
   {
-    title: '测试',
-    key: '/admin/test'
+    title: '表格',
+    key: '/admin/table',
+    children: [
+      {
+        title: '基础表格',
+        key: '/admin/table/basic'
+      },
+      {
+        title: '高级表格',
+        key: '/admin/table/high'
+      }
+    ]
   },
   {
     title: '运营',
