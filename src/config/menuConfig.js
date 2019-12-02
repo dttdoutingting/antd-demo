@@ -30,6 +30,10 @@ const menuList = [
       {
         title: '标签页',
         key: '/admin/ui/tabs'
+      },
+      {
+        title: '图片画廊',
+        key: '/admin/ui/gallery'
       }
     ]
   },
