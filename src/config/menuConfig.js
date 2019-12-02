@@ -47,23 +47,23 @@ const menuList = [
     children: [
       {
         title: '登录',
-        key: '/admin/ui/login'
+        key: '/admin/form/login'
       },
       {
-        title: '弹框',
-        key: '/admin/ui/modals'
+        title: '注册',
+        key: '/admin/form/reg'
       },
       {
         title: 'Loading',
-        key: '/admin/ui/load'
+        key: '/admin/form/load'
       },
       {
         title: '表格',
-        key: '/admin/ui/table'
+        key: '/admin/form/table'
       },
       {
         title: '图表',
-        key: '/admin/ui/chart'
+        key: '/admin/form/chart'
       }
     ]
   },
