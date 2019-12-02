@@ -1,2 +1,2 @@
 # antd-demo
-create-react-app中创建并使用的antd项目，后续会用webpack打包，学习react-router等插件
+create-react-app中创建并使用的antd项目，学习webpack打包工具、学习router4.0的功能、学习antd最常用的组件
