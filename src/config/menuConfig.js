@@ -20,8 +20,8 @@ const menuList = [
         key: '/admin/ui/loadings'
       },
       {
-        title: '表格',
-        key: '/admin/ui/table'
+        title: '通知提醒',
+        key: '/admin/ui/notication'
       },
       {
         title: '图表',
