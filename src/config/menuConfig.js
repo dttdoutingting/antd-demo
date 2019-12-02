@@ -26,6 +26,10 @@ const menuList = [
       {
         title: '全局提醒框',
         key: '/admin/ui/message'
+      },
+      {
+        title: '标签页',
+        key: '/admin/ui/tabs'
       }
     ]
   },
