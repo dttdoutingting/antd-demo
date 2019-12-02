@@ -12,34 +12,34 @@ class BasicTable extends Component {
   componentWillMount() {
     const data = [
       {
-        key: '1',
-        id: '0',
+        key: 1,
+        id: 0,
         userName: 'Jack',
-        sex: '1',
-        state: '1',
-        interest: '1',
+        sex: 1,
+        state: 3,
+        interest: 1,
         birthday: '2000-03-02',
         address: '上海市浦东新区',
         time: '08:30'
       },
       {
-        key: '2',
-        id: '1',
+        key: 2,
+        id: 1,
         userName: 'Jack',
-        sex: '1',
-        state: '1',
-        interest: '1',
+        sex: 1,
+        state: 1,
+        interest: 1,
         birthday: '2000-03-02',
         address: '上海市浦东新区',
         time: '08:30'
       },
       {
-        key: '3',
-        id: '2',
+        key: 3,
+        id: 2,
         userName: 'Jack',
-        sex: '1',
-        state: '1',
-        interest: '1',
+        sex: 2,
+        state: 2,
+        interest: 4,
         birthday: '2000-03-02',
         address: '上海市浦东新区',
         time: '08:30'
@@ -91,15 +91,38 @@ class BasicTable extends Component {
       },
       {
         title: '性别',
-        dataIndex: 'sex'
+        dataIndex: 'sex',
+        render(sex) {
+          return sex === 1 ? '男' : '女';
+        }
       },
       {
         title: '状态',
-        dataIndex: 'state'
+        dataIndex: 'state',
+        render(state) {
+          let config = {
+            '1': '咸鱼一条',
+            '2': '风华浪子',
+            '3': '北大才子',
+            '4': '百度FE',
+            '5': '创业者'
+          };
+          return config[String(state)];
+        }
       },
       {
         title: '爱好',
-        dataIndex: 'interest'
+        dataIndex: 'interest',
+        render(state) {
+          let config = {
+            '1': '游泳',
+            '2': '打篮球',
+            '3': '踢足球',
+            '4': '跑步',
+            '5': '练瑜伽'
+          };
+          return config[String(state)];
+        }
       },
       {
         title: '生日',
