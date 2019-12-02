@@ -58,7 +58,7 @@ class FormLogin extends Component {
                   { required: true, message: '用户名不能为空' },
                   { min: 5, max: 10, message: '长度不在范围内' },
                   {
-                    pattern: new RegExp('/^\\w+$', 'g'),
+                    pattern: new RegExp('^\\w+$', 'g'),
                     message: '用户名必须为字母或者数字'
                   }
                 ]
