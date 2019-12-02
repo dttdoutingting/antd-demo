@@ -7,6 +7,7 @@ import Buttons from './pages/ui/buttons';
 import Modals from './pages/ui/modals';
 import Loadings from './pages/ui/loadings';
 import Notice from './pages/ui/notice';
+import Message from './pages/ui/message';
 import NoMatch from './pages/noMatch';
 class IRouter extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class IRouter extends Component {
                   <Route path="/admin/ui/modals" component={Modals}></Route>
                   <Route path="/admin/ui/loadings" component={Loadings}></Route>
                   <Route path="/admin/ui/notication" component={Notice}></Route>
+                  <Route path="/admin/ui/message" component={Message}></Route>
                   <Route component={NoMatch} />
                 </Switch>
               </Admin>

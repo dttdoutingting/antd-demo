@@ -24,8 +24,8 @@ const menuList = [
         key: '/admin/ui/notication'
       },
       {
-        title: '图表',
-        key: '/admin/ui/chart'
+        title: '全局提醒框',
+        key: '/admin/ui/message'
       }
     ]
   },
