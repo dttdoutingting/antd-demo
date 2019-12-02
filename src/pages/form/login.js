@@ -8,13 +8,13 @@ class FormLogin extends Component {
     super(props);
     this.state = {};
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    let userInfo = this.props.form.getFieldDecorator();
+  handleSubmit = () => {
+    //提交函数，在此函数中你可以通过getFieldsValue方法拿到表单数据
+    let userInfo = this.props.form.getFieldsValue();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         message.success(
-          `${userInfo.username}恭喜您，您通过本次表单组件学习，当前密码为：${userInfo.password}`
+          `${userInfo.userName}欢迎您 ，当前密码为：${userInfo.userPwd}`
         );
       }
     });
@@ -50,7 +50,11 @@ class FormLogin extends Component {
         </Card>
 
         <Card title="登录水平表单" style={{ marginTop: 10 }}>
-          <Form layout="horizontal" className="login-form">
+          <Form
+            layout="horizontal"
+            className="login-form"
+            onSubmit={this.handleSubmit}
+          >
             <FormItem>
               {getFieldDecorator('username', {
                 initialValue: '',
@@ -99,7 +103,6 @@ class FormLogin extends Component {
                 type="primary"
                 htmlType="submit"
                 className="login-form-button"
-                onClick={this.handleSubmit}
               >
                 登录
               </Button>
