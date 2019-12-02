@@ -10,6 +10,7 @@ import Notice from './pages/ui/notice';
 import Message from './pages/ui/message';
 import Tabs from './pages/ui/tabs';
 import Gallery from './pages/ui/gallery';
+import Carousel from './pages/ui/carousels';
 import NoMatch from './pages/noMatch';
 class IRouter extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class IRouter extends Component {
                   <Route path="/admin/ui/message" component={Message}></Route>
                   <Route path="/admin/ui/tabs" component={Tabs}></Route>
                   <Route path="/admin/ui/gallery" component={Gallery}></Route>
+                  <Route path="/admin/ui/carousel" component={Carousel}></Route>
                   <Route component={NoMatch} />
                 </Switch>
               </Admin>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Row, Col, Modal } from 'antd';
+import './ui.less';
 class Gallery extends Component {
   constructor(props) {
     super(props);
