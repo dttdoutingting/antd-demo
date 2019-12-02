@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Table } from 'antd';
+// import axios from 'axios';
+import axios from './../../axios/index';
 
 class BasicTable extends Component {
   constructor(props) {
@@ -46,8 +48,37 @@ class BasicTable extends Component {
     this.setState({
       data
     });
+    this.request();
   }
 
+  request = () => {
+    // let baseUrl = 'https://easy-mock.com/mock/5de4f6555ca3f8525a4d3b2a/mockapi';
+    // axios.get(baseUrl + '/table/list').then(res => {
+    //   // console.log(JSON.stringify(res));
+    //   if (res.status === 200 && res.data.code === 0) {
+    //     this.setState({
+    //       data2: res.data.result.list
+    //     });
+    //   }
+    // });
+
+    axios
+      .ajax({
+        url: '/table/list',
+        data: {
+          params: {
+            page: 1
+          }
+        }
+      })
+      .then(res => {
+        if (res.code === 0) {
+          this.setState({
+            data2: res.result.list
+          });
+        }
+      });
+  };
   render() {
     const columns = [
       {
@@ -88,6 +119,9 @@ class BasicTable extends Component {
             dataSource={this.state.data}
             // pagination={false}
           ></Table>
+        </Card>
+        <Card title="动态数据渲染表格" style={{ marginTop: 10 }}>
+          <Table columns={columns} dataSource={this.state.data2}></Table>
         </Card>
       </div>
     );

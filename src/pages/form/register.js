@@ -14,7 +14,6 @@ import {
   DatePicker,
   TimePicker,
   Upload,
-  message,
   Modal
 } from 'antd';
 
@@ -144,7 +143,6 @@ class Register extends Component {
         <div className="ant-upload-text">Upload</div>
       </div>
     );
-    const { imageUrl } = this.state;
     return (
       <div>
         <Card title="注册表单">
