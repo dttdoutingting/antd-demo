@@ -59,16 +59,18 @@ class City extends Component {
         }
       })
       .then(res => {
-        this.setState({
-          list: res.result.list.map((item, index) => {
-            item.key = index;
-            return item;
-          }),
-          pagination: Utils.pagination(res, current => {
-            _this.params.page = current;
-            this.requestList();
-          })
-        });
+        if (res.code === 0) {
+          this.setState({
+            list: res.result.list.map((item, index) => {
+              item.key = index;
+              return item;
+            }),
+            pagination: Utils.pagination(res, current => {
+              _this.params.page = current;
+              this.requestList();
+            })
+          });
+        }
       });
   };
   // 开通城市

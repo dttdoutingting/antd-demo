@@ -18,6 +18,7 @@ import HighTable from './pages/table/highTable';
 import SortTable from './pages/table/sortTable';
 import OperateTable from './pages/table/operateTable';
 import City from './pages/city';
+import Order from './pages/order';
 import NoMatch from './pages/noMatch';
 class IRouter extends Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class IRouter extends Component {
                     component={OperateTable}
                   ></Route>
                   <Route path="/admin/city" component={City}></Route>
+                  <Route path="/admin/order" component={Order}></Route>
                   <Route component={NoMatch} />
                 </Switch>
               </Admin>
