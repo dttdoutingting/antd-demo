@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Table, Input, InputNumber, Popconfirm, Form } from 'antd';
 
 const data = [];
@@ -93,6 +93,7 @@ class EditableTable extends React.Component {
               <EditableContext.Consumer>
                 {form => (
                   <a
+                    href="/#"
                     onClick={() => this.save(form, record.key)}
                     style={{ marginRight: 8 }}
                   >
@@ -104,11 +105,12 @@ class EditableTable extends React.Component {
                 title="Sure to cancel?"
                 onConfirm={() => this.cancel(record.key)}
               >
-                <a>Cancel</a>
+                <a href="/#">Cancel</a>
               </Popconfirm>
             </span>
           ) : (
             <a
+              href="/#"
               disabled={editingKey !== ''}
               onClick={() => this.edit(record.key)}
             >
