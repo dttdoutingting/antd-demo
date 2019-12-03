@@ -72,7 +72,7 @@ class BasicTable extends Component {
             selectedRows: null,
             pagination: Utils.pagination(res, current => {
               _this.params.page = current;
-              _this.request();
+              this.request();
             })
           });
         }
