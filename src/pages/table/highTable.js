@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Card, Table } from 'antd';
-import axios from './../../axios/index';
-import Utils from './../../utils/utils';
 class HighTable extends Component {
   constructor(props) {
     super(props);
@@ -48,40 +46,7 @@ class HighTable extends Component {
       data,
       data2
     });
-    this.request();
   }
-
-  request = () => {
-    let _this = this;
-    axios
-      .ajax({
-        url: '/table/list',
-        data: {
-          params: {
-            page: this.params.page
-          },
-          isShowLoading: false
-        }
-      })
-      .then(res => {
-        if (res.code === 0) {
-          res.result.list.map((item, index) => {
-            item.key = index;
-            return item;
-          });
-          this.setState({
-            data3: res.result.list,
-            selectedRowKeys: [],
-            selectedRows: null,
-            pagination: Utils.pagination(res, current => {
-              _this.params.page = current;
-              this.request();
-            })
-          });
-        }
-      });
-  };
-
   render() {
     const columns = [
       {

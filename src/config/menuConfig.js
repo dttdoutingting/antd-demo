@@ -66,6 +66,10 @@ const menuList = [
       {
         title: '高级表格',
         key: '/admin/table/high'
+      },
+      {
+        title: '表格排序',
+        key: '/admin/table/sort'
       }
     ]
   },
