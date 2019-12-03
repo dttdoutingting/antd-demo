@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, Table, Button, Modal, message } from 'antd';
 // import axios from 'axios';
 import axios from './../../axios/index';
+import Utils from './../../utils/utils';
 
 class BasicTable extends Component {
   constructor(props) {
@@ -12,6 +13,9 @@ class BasicTable extends Component {
     };
   }
 
+  params = {
+    page: 1
+  };
   componentWillMount() {
     const data = [];
     for (let i = 0; i < 10; i++) {
@@ -44,12 +48,13 @@ class BasicTable extends Component {
     //   }
     // });
 
+    let _this = this;
     axios
       .ajax({
         url: '/table/list',
         data: {
           params: {
-            page: 1
+            page: this.params.page
           },
           isShowLoading: false
         }
@@ -60,10 +65,16 @@ class BasicTable extends Component {
             item.key = index;
             return item;
           });
+          console.log(res.result);
           this.setState({
             data2: res.result.list,
+            data3: res.result.list,
             selectedRowKeys: [],
-            selectedRows: null
+            selectedRows: null,
+            pagination: Utils.pagination(res, current => {
+              _this.params.page = current;
+              this.request();
+            })
           });
         }
       });
@@ -232,6 +243,15 @@ class BasicTable extends Component {
             rowSelection={rowSelection}
             columns={columns}
             dataSource={this.state.data2}
+          ></Table>
+        </Card>
+
+        <Card title="表格分页" style={{ marginTop: 10 }}>
+          <Table
+            bordered
+            columns={columns}
+            dataSource={this.state.data3}
+            pagination={this.state.pagination}
           ></Table>
         </Card>
       </div>
