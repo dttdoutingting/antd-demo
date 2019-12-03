@@ -8,7 +8,7 @@ class BasicTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedRowKeys: [], // Check here to configure the default column
+      selectedRowKeys: [], // Check here to configure the default
       loading: false
     };
   }
@@ -65,7 +65,6 @@ class BasicTable extends Component {
             item.key = index;
             return item;
           });
-          console.log(res.result);
           this.setState({
             data2: res.result.list,
             data3: res.result.list,
@@ -116,7 +115,6 @@ class BasicTable extends Component {
 
   handleDelete = () => {
     let rows = this.state.selectedRows;
-    console.log(rows);
     let ids = [];
     rows.map(item => {
       ids.push(item.id);
