@@ -70,6 +70,10 @@ const menuList = [
       {
         title: '表格排序',
         key: '/admin/table/sort'
+      },
+      {
+        title: '表格操作',
+        key: '/admin/table/operate'
       }
     ]
   },
