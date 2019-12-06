@@ -60,11 +60,11 @@ class Detail extends Component {
   };
 
   // 绘制用户的行驶路线
-  drawBikeRoute = positionLoist => {
+  drawBikeRoute = positionList => {
     let map = this.map;
     let startPoint = '';
     let endPoint = '';
-    if (positionLoist.lenghth > 0) {
+    if (positionList.lenghth > 0) {
       let arr = positionList[0];
       startPoint = new window.BMap.Point(arr.lon, arr.lat);
       let startIcon = new window.BMap.Icon(
