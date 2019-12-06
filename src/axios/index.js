@@ -10,7 +10,7 @@ export default class Axios {
           param: 'callback'
         },
         function(err, response) {
-          if (response.status === 'success') {
+          if (response.status === 200) {
             resolve(response);
           } else {
             reject(response.message);

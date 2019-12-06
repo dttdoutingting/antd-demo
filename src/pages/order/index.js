@@ -106,9 +106,20 @@ class Order extends Component {
   onRowClick = (record, index) => {
     let selectKey = [index];
     this.setState({
-      selectedRowKeys1: selectKey,
+      selectedRowKeys: selectKey,
       selectedItem: record
     });
+  };
+  openOrderDetail = () => {
+    let item = this.state.selectedItem;
+    if (!item) {
+      Modal.info({
+        title: '信息',
+        content: '请选择一条订单'
+      });
+      return;
+    }
+    window.open(`/#/common/order/detail/${item.id}`);
   };
   render() {
     const columns = [
@@ -181,7 +192,11 @@ class Order extends Component {
           <FiletrForm />
         </Card>
         <Card style={{ marginTop: 10 }}>
-          <Button type="primary" style={{ marginRight: 10 }}>
+          <Button
+            type="primary"
+            style={{ marginRight: 10 }}
+            onClick={this.openOrderDetail}
+          >
             订单详情
           </Button>
           <Button type="primary" onClick={this.handleConfirm}>

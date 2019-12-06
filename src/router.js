@@ -21,6 +21,8 @@ import OperateTable from './pages/table/operateTable';
 import City from './pages/city';
 import Order from './pages/order';
 import NoMatch from './pages/noMatch';
+
+import Common from './common';
 class IRouter extends Component {
   constructor(props) {
     super(props);
@@ -30,41 +32,68 @@ class IRouter extends Component {
     return (
       <HashRouter>
         <App>
-          <Route path="/login" component={Login} />
-          <Route
-            path="/admin"
-            render={() => (
-              <Admin>
-                <Switch>
-                  <Route path="/admin/home" component={Home}></Route>
-                  <Route path="/admin/ui/buttons" component={Buttons}></Route>
-                  <Route path="/admin/ui/modals" component={Modals}></Route>
-                  <Route path="/admin/ui/loadings" component={Loadings}></Route>
-                  <Route path="/admin/ui/notication" component={Notice}></Route>
-                  <Route path="/admin/ui/message" component={Message}></Route>
-                  <Route path="/admin/ui/tabs" component={Tabs}></Route>
-                  <Route path="/admin/ui/gallery" component={Gallery}></Route>
-                  <Route path="/admin/ui/carousel" component={Carousel}></Route>
-                  <Route path="/admin/form/login" component={FormLogin}></Route>
-                  <Route path="/admin/form/reg" component={Register}></Route>
-                  <Route
-                    path="/admin/table/basic"
-                    component={BasicTable}
-                  ></Route>
-                  <Route path="/admin/table/high" component={HighTable}></Route>
-                  <Route path="/admin/table/sort" component={SortTable}></Route>
-                  <Route
-                    path="/admin/table/operate"
-                    component={OperateTable}
-                  ></Route>
-                  <Route path="/admin/city" component={City}></Route>
-                  <Route path="/admin/order" component={Order}></Route>
-                  <Route component={NoMatch} />
-                </Switch>
-              </Admin>
-            )}
-          />
-          <Route path="/order/detail" component={Login} />
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route
+              path="/admin"
+              render={() => (
+                <Admin>
+                  <Switch>
+                    <Route path="/admin/home" component={Home}></Route>
+                    <Route path="/admin/ui/buttons" component={Buttons}></Route>
+                    <Route path="/admin/ui/modals" component={Modals}></Route>
+                    <Route
+                      path="/admin/ui/loadings"
+                      component={Loadings}
+                    ></Route>
+                    <Route
+                      path="/admin/ui/notication"
+                      component={Notice}
+                    ></Route>
+                    <Route path="/admin/ui/message" component={Message}></Route>
+                    <Route path="/admin/ui/tabs" component={Tabs}></Route>
+                    <Route path="/admin/ui/gallery" component={Gallery}></Route>
+                    <Route
+                      path="/admin/ui/carousel"
+                      component={Carousel}
+                    ></Route>
+                    <Route
+                      path="/admin/form/login"
+                      component={FormLogin}
+                    ></Route>
+                    <Route path="/admin/form/reg" component={Register}></Route>
+                    <Route
+                      path="/admin/table/basic"
+                      component={BasicTable}
+                    ></Route>
+                    <Route
+                      path="/admin/table/high"
+                      component={HighTable}
+                    ></Route>
+                    <Route
+                      path="/admin/table/sort"
+                      component={SortTable}
+                    ></Route>
+                    <Route
+                      path="/admin/table/operate"
+                      component={OperateTable}
+                    ></Route>
+                    <Route path="/admin/city" component={City}></Route>
+                    <Route path="/admin/order" component={Order}></Route>
+                    <Route component={NoMatch} />
+                  </Switch>
+                </Admin>
+              )}
+            />
+            <Route
+              path="/common"
+              render={() => (
+                <Common>
+                  <Route path="/common/order/detail:orderId" component={Home} />
+                </Common>
+              )}
+            ></Route>
+          </Switch>
         </App>
       </HashRouter>
     );
