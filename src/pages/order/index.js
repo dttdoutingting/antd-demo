@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Card, Form, Table, Button, Select, Modal, message } from 'antd';
+import { Card, Form, Table, Button, Modal, message } from 'antd';
 import axios from '../../axios';
-import Utils from '../../utils/utils';
 import BaseForm from '../../components/BaseForm';
+import ETable from '../../components/ETable';
+import Utils from '../../utils/utils';
 const FormItem = Form.Item;
 
 class Order extends Component {
@@ -66,30 +67,7 @@ class Order extends Component {
   };
   requestList = () => {
     let _this = this;
-    axios
-      .ajax({
-        url: '/order/list',
-        data: {
-          params: {
-            page: this.params
-          }
-          // isShowLoading: false
-        }
-      })
-      .then(res => {
-        if (res.code === 0) {
-          this.setState({
-            list: res.result.list.map((item, index) => {
-              item.key = index;
-              return item;
-            }),
-            pagination: Utils.pagination(res, current => {
-              _this.params.page = current;
-              this.requestList();
-            })
-          });
-        }
-      });
+    axios.requestList(this, '/order/list', this.params, true);
   };
   // 结束订单确认
   handleConfirm = () => {
@@ -137,13 +115,6 @@ class Order extends Component {
           });
         }
       });
-  };
-  onRowClick = (record, index) => {
-    let selectKey = [index];
-    this.setState({
-      selectedRowKeys: selectKey,
-      selectedItem: record
-    });
   };
   openOrderDetail = () => {
     let item = this.state.selectedItem;
@@ -216,11 +187,6 @@ class Order extends Component {
         sm: { span: 19 }
       }
     };
-    const { selectedRowKeys } = this.state;
-    const rowSelection = {
-      type: 'radio',
-      selectedRowKeys
-    };
     return (
       <div>
         <Card>
@@ -239,19 +205,15 @@ class Order extends Component {
           </Button>
         </Card>
         <div className="content_wrap">
-          <Table
-            bordered
+          <ETable
+            updatedSelectedItem={Utils.updatedSelectedItem.bind(this)}
             columns={columns}
             dataSource={this.state.list}
+            selectedRowKeys={this.state.selectedRowKeys}
+            selectedIds={this.state.selectedIds}
+            selectedItem={this.state.selectedItem}
             pagination={this.state.pagination}
-            rowSelection={rowSelection}
-            onRow={(record, index) => {
-              return {
-                onClick: () => {
-                  this.onRowClick(record, index);
-                }
-              };
-            }}
+            rowSelection="checkbox"
           />
         </div>
         <Modal

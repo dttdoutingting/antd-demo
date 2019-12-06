@@ -60,5 +60,20 @@ export default {
       );
     });
     return options;
+  },
+
+  updatedSelectedItem(selectedRowKeys, selectedItem, selectedIds) {
+    if (selectedIds) {
+      this.setState({
+        selectedRowKeys,
+        selectedItem,
+        selectedIds
+      });
+    } else {
+      this.setState({
+        selectedRowKeys,
+        selectedItem
+      });
+    }
   }
 };
