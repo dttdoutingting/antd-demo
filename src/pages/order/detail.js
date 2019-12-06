@@ -30,15 +30,79 @@ class Detail extends Component {
           this.setState({
             orderInfo: res.result
           });
+          this.renderMap(res.result);
         }
       });
+  };
+  renderMap = result => {
+    this.map = new window.BMap.Map('orderDetailMap');
+    // this.map.centerAndZoom('北京', 11);
+    this.map.addMapControl();
+
+    // 调用路线图绘制方法
+    this.drawBikeRoute(result.position_list);
+
+    // 调用服务区绘制方法
+    this.drawServiceArea(result.area);
+  };
+
+  // 添加地图控件
+  addMapControl = () => {
+    let map = this.map;
+    map.addControl(
+      new window.BMap.ScaleControl({ auchor: window.BMAP_ANCHOR_TOP_RIGHT })
+    );
+    map.addControl(
+      new window.BMap.NavigationControl({
+        auchor: window.BMAP_ANCHOR_TOP_RIGHT
+      })
+    );
+  };
+
+  // 绘制用户的行驶路线
+  drawBikeRoute = positionLoist => {
+    let map = this.map;
+    let startPoint = '';
+    let endPoint = '';
+    if (positionLoist.lenghth > 0) {
+      let arr = positionList[0];
+      startPoint = new window.BMap.Point(arr.lon, arr.lat);
+      let startIcon = new window.BMap.Icon(
+        '/assets/start_point.png',
+        new window.BMap.Size(36, 42),
+        {
+          imageSize: new window.BMap.Size(36, 42),
+          auchor: new window.BMap.Size(36, 42)
+        }
+      );
+      let startMarker = new window.BMap.Marker(startPoint, { icon: startIcon });
+    }
+  };
+
+  // 绘制服务区
+  drawServiceArea = positionList => {
+    let trackPoint = [];
+    for (let i = 0; i < positionList.length; i++) {
+      let point = positionList[i];
+      trackPoint.push(new window.BMap.Point(point.lon, point.lat));
+    }
+
+    // 绘制服务区
+    let polygon = new window.BMap.Polygon(trackPoint, {
+      strokeColor: '#CE0000',
+      strokeWeight: 4,
+      strokeOpacity: 1,
+      fillColor: '#ff8605',
+      fillOpacity: 0.4
+    });
+    this.map.addOverlay(polygon);
   };
   render() {
     const info = this.state.orderInfo || {};
     return (
       <div>
         <Card>
-          <div id="orderDetailMap"></div>
+          <div id="orderDetailMap" className="order-map"></div>
           <div className="detail-items">
             <div className="item-title">基础信息</div>
             <ul className="detail-form">
