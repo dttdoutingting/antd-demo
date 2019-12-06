@@ -84,6 +84,10 @@ const menuList = [
   {
     title: '订单管理',
     key: '/admin/order'
+  },
+  {
+    title: '订单详情',
+    key: '/common/order/detail:orderId'
   }
 ];
 

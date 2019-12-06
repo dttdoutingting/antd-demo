@@ -23,6 +23,8 @@ import Order from './pages/order';
 import NoMatch from './pages/noMatch';
 
 import Common from './common';
+import OrderDetail from './pages/order/detail';
+
 class IRouter extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +36,20 @@ class IRouter extends Component {
         <App>
           <Switch>
             <Route path="/login" component={Login} />
+            <Route
+              path="/common"
+              render={() => (
+                <Common>
+                  <Switch>
+                    <Route
+                      path="/common/order/detail:orderId"
+                      component={OrderDetail}
+                    />
+                    <Route component={NoMatch} />
+                  </Switch>
+                </Common>
+              )}
+            ></Route>
             <Route
               path="/admin"
               render={() => (
@@ -85,14 +101,6 @@ class IRouter extends Component {
                 </Admin>
               )}
             />
-            <Route
-              path="/common"
-              render={() => (
-                <Common>
-                  <Route path="/common/order/detail:orderId" component={Home} />
-                </Common>
-              )}
-            ></Route>
           </Switch>
         </App>
       </HashRouter>
