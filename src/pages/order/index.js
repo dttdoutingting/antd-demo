@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
-import {
-  Card,
-  Form,
-  Table,
-  Button,
-  Select,
-  Modal,
-  message,
-  DatePicker
-} from 'antd';
+import { Card, Form, Table, Button, Select, Modal, message } from 'antd';
 import axios from '../../axios';
 import Utils from '../../utils/utils';
+import BaseForm from '../../components/BaseForm';
 const FormItem = Form.Item;
-const Option = Select.Option;
 
 class Order extends Component {
   constructor(props) {
@@ -25,10 +16,54 @@ class Order extends Component {
   params = {
     page: 1
   };
+  formList = [
+    {
+      type: 'SELECT',
+      label: '城市',
+      field: 'city',
+      placeholder: '全部',
+      initialValue: '1',
+      width: 80,
+      list: [
+        { id: '0', name: '全部' },
+        { id: '1', name: '上海' },
+        { id: '2', name: '北京' },
+        { id: '3', name: '南京' },
+        { id: '4', name: '合肥' }
+      ]
+    },
+    {
+      type: '时间查询',
+      width: 90
+    },
+    {
+      type: 'SELECT',
+      label: '订单状态',
+      field: 'order_status',
+      placeholder: '全部',
+      initialValue: '1',
+      width: 80,
+      list: [
+        { id: '0', name: '全部' },
+        { id: '1', name: '进行中' },
+        { id: '2', name: '结束行程' }
+      ]
+    },
+    {
+      type: 'INPUT',
+      label: '模式',
+      field: 'mode',
+      placeholder: '请输入模式',
+      width: 100
+    }
+  ];
   componentDidMount() {
     this.requestList();
   }
-
+  handleFilter = params => {
+    this.params = params;
+    this.requestList();
+  };
   requestList = () => {
     let _this = this;
     axios
@@ -36,7 +71,7 @@ class Order extends Component {
         url: '/order/list',
         data: {
           params: {
-            page: this.params.page
+            page: this.params
           }
           // isShowLoading: false
         }
@@ -189,7 +224,7 @@ class Order extends Component {
     return (
       <div>
         <Card>
-          <FiletrForm />
+          <BaseForm formList={this.formList} filterSubmit={this.handleFilter} />
         </Card>
         <Card style={{ marginTop: 10 }}>
           <Button
@@ -249,50 +284,3 @@ class Order extends Component {
 }
 
 export default Order;
-
-class FiletrForm extends Component {
-  render() {
-    const { getFieldDecorator } = this.props.form;
-    return (
-      <Form layout="inline">
-        <FormItem label="城市">
-          {getFieldDecorator('city_id')(
-            <Select style={{ width: 100 }} placeholder="全部">
-              <Option value="">全部</Option>
-              <Option value="1">上海市</Option>
-              <Option value="2">北京市</Option>
-              <Option value="3">南京市</Option>
-            </Select>
-          )}
-        </FormItem>
-        <FormItem label="订单时间">
-          {getFieldDecorator('start_time')(
-            <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />
-          )}
-        </FormItem>
-        <FormItem label="~" colon={false}>
-          {getFieldDecorator('end_time')(
-            <DatePicker showTime format="YYYY-MM-DD HH:mm:ss" />
-          )}
-        </FormItem>
-        <FormItem label="订单状态">
-          {getFieldDecorator('status')(
-            <Select style={{ width: 100 }} placeholder="全部">
-              <Option value="">全部</Option>
-              <Option value="1">进行中</Option>
-              <Option value="2">行程结束</Option>
-            </Select>
-          )}
-        </FormItem>
-        <FormItem>
-          <Button type="primary" style={{ margin: '0 20px' }}>
-            查询
-          </Button>
-          <Button>重置</Button>
-        </FormItem>
-      </Form>
-    );
-  }
-}
-
-FiletrForm = Form.create({})(FiletrForm);
