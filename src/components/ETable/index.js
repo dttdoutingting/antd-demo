@@ -43,8 +43,7 @@ class ETable extends Component {
     let selectedRowKeys = this.props.selectedRowKeys;
     const rowSelection = {
       type: 'radio',
-      selectedRowKeys,
-      onChange: this.onSelectChange
+      selectedRowKeys
     };
     if (row_selection === false || row_selection === null) {
       row_selection = false;

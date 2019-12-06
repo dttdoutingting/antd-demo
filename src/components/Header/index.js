@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
+import { connect } from 'react-redux';
 import Util from '../../utils/utils';
 import axios from '../../axios';
 import './index.less';
@@ -59,7 +60,7 @@ class Header extends Component {
         ) : (
           <Row className="breadcrumb">
             <Col span={4} className="breadcrumb-title">
-              首页
+              {this.props.menuName}
             </Col>
             <Col span={20} className="breadcrumb-weather">
               <span className="date">{this.state.sysTime}</span>
@@ -75,4 +76,9 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    menuName: state.menuName
+  };
+};
+export default connect(mapStateToProps)(Header);

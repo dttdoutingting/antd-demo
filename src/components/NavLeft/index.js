@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
+import { connect } from 'react-redux';
+import { switchMenu } from './../../redux/action';
 import { NavLink } from 'react-router-dom';
 import './index.less';
 import MenuConfig from './../../config/menuConfig';
 
 const SubMenu = Menu.SubMenu;
 class NavLeft extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentKey: ''
+    };
+  }
   componentWillMount() {
     const menuTreeNode = this.renderMenu(MenuConfig);
+    let currentKey = window.location.hash.replace(/#|\?.*$/g, '');
     this.setState({
-      menuTreeNode
+      menuTreeNode,
+      currentKey
     });
   }
   // 菜单渲染
@@ -29,6 +39,13 @@ class NavLeft extends Component {
       );
     });
   };
+  handleClick = ({ item, key }) => {
+    const { dispatch } = this.props;
+    dispatch(switchMenu(item.props.title));
+    this.setState({
+      currentKey: key
+    });
+  };
   render() {
     return (
       <div>
@@ -36,10 +53,16 @@ class NavLeft extends Component {
           <img src="/assets/logo-ant.svg" alt="" />
           <h1>Wendy MS</h1>
         </div>
-        <Menu theme="dark">{this.state.menuTreeNode}</Menu>
+        <Menu
+          onClick={this.handleClick}
+          selectedKeys={this.state.currentKey}
+          theme="dark"
+        >
+          {this.state.menuTreeNode}
+        </Menu>
       </div>
     );
   }
 }
 
-export default NavLeft;
+export default connect()(NavLeft);
