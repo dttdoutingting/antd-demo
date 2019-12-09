@@ -57,7 +57,7 @@ class FilterForm extends Component {
             <FormItem label={label} key={field}>
               {getFieldDecorator([field], {
                 initialValue: initialValue
-              })(<Input type="text" placeholder={placeholder} />)}
+              })(<Input type="text" style={{ width: width }} placeholder={placeholder} />)}
             </FormItem>
           );
           formItemList.push(INPUT);
@@ -85,12 +85,25 @@ class FilterForm extends Component {
             </FormItem>
           );
           formItemList.push(CHECKBOX);
+        } else if (item.type === 'DATE') {
+          const DATE = (
+            <FormItem label={label} key={field} >
+              {getFieldDecorator([field])(
+                <DatePicker
+                  showTime
+                  placeholder={placeholder}
+                  format="YYYY-MM-DD HH:mm:ss"
+                />
+              )}
+            </FormItem>
+          );
+          formItemList.push(DATE);
         }
       });
     }
     return formItemList;
   };
-  render() {
+  render () {
     return (
       <Form layout="inline">
         {this.initFormList()}

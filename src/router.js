@@ -20,6 +20,7 @@ import SortTable from './pages/table/sortTable';
 import OperateTable from './pages/table/operateTable';
 import City from './pages/city';
 import Order from './pages/order';
+import User from './pages/user';
 import NoMatch from './pages/noMatch';
 
 import Common from './common';
@@ -30,7 +31,7 @@ class IRouter extends Component {
     super(props);
     this.state = {};
   }
-  render() {
+  render () {
     return (
       <HashRouter>
         <App>
@@ -96,6 +97,7 @@ class IRouter extends Component {
                     ></Route>
                     <Route path="/admin/city" component={City}></Route>
                     <Route path="/admin/order" component={Order}></Route>
+                    <Route path="/admin/user" component={User}></Route>
                     <Route component={NoMatch} />
                   </Switch>
                 </Admin>
