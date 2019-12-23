@@ -13,12 +13,7 @@ export default (state = initialState, action) => {
         ...state,
         menuName: action.menuName
       };
-      break;
     default:
-      return {
-        ...state,
-        menuName: action.menuName
-      };
-      break;
+      return state
   }
 };

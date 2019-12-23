@@ -2,7 +2,7 @@ import React from 'react';
 import { Select } from 'antd';
 const Option = Select.Option;
 export default {
-  formateDate(time) {
+  formateDate (time) {
     if (!time) return '';
     let date = new Date(time);
     let year = date.getFullYear();
@@ -27,7 +27,7 @@ export default {
       year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second
     );
   },
-  pagination(data, callback) {
+  pagination (data, callback) {
     let page = {
       onChange: current => {
         callback(current);
@@ -43,7 +43,7 @@ export default {
     return page;
   },
 
-  getOptionList(data) {
+  getOptionList (data) {
     if (!data) {
       return [];
     }
@@ -52,17 +52,17 @@ export default {
       //   全部
       // </Option>
     ];
-    data.map(item => {
+    data.map(item =>
       options.push(
         <Option value={item.id} key={item.id}>
           {item.name}
         </Option>
-      );
-    });
+      )
+    )
     return options;
   },
 
-  updatedSelectedItem(selectedRowKeys, selectedItem, selectedIds) {
+  updatedSelectedItem (selectedRowKeys, selectedItem, selectedIds) {
     if (selectedIds) {
       this.setState({
         selectedRowKeys,

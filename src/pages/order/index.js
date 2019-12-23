@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Form, Table, Button, Modal, message } from 'antd';
+import { Card, Form, Button, Modal, message } from 'antd';
 import axios from '../../axios';
 import BaseForm from '../../components/BaseForm';
 import ETable from '../../components/ETable';
@@ -58,7 +58,7 @@ class Order extends Component {
       width: 100
     }
   ];
-  componentDidMount() {
+  componentDidMount () {
     this.requestList();
   }
   handleFilter = params => {
@@ -67,7 +67,7 @@ class Order extends Component {
   };
   requestList = () => {
     let _this = this;
-    axios.requestList(this, '/order/list', this.params, true);
+    axios.requestList(_this, '/order/list', _this.params, true);
   };
   // 结束订单确认
   handleConfirm = () => {
@@ -127,7 +127,7 @@ class Order extends Component {
     }
     window.open(`/#/common/order/detail/${item.id}`);
   };
-  render() {
+  render () {
     const columns = [
       {
         title: '订单编号',
@@ -148,7 +148,7 @@ class Order extends Component {
       {
         title: '里程',
         dataIndex: 'distance',
-        render(distance) {
+        render (distance) {
           return distance / 1000 + 'Km';
         }
       },

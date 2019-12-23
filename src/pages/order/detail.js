@@ -9,7 +9,7 @@ class Detail extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
+  componentDidMount () {
     let orderId = this.props.match.params.orderId;
     if (orderId) {
       this.getDetailInfo();
@@ -61,9 +61,9 @@ class Detail extends Component {
 
   // 绘制用户的行驶路线
   drawBikeRoute = positionList => {
-    let map = this.map;
+    // let map = this.map;
     let startPoint = '';
-    let endPoint = '';
+    // let endPoint = '';
     if (positionList.lenghth > 0) {
       let arr = positionList[0];
       startPoint = new window.BMap.Point(arr.lon, arr.lat);
@@ -97,7 +97,7 @@ class Detail extends Component {
     });
     this.map.addOverlay(polygon);
   };
-  render() {
+  render () {
     const info = this.state.orderInfo || {};
     return (
       <div>
