@@ -92,6 +92,10 @@ const menuList = [
   {
     title: '员工管理',
     key: '/admin/user'
+  },
+  {
+    title: '权限管理',
+    key: '/admin/permission'
   }
 ];
 

@@ -5,7 +5,7 @@ import Util from '../../utils/utils';
 import axios from '../../axios';
 import './index.less';
 class Header extends Component {
-  componentWillMount() {
+  componentWillMount () {
     this.setState({
       userName: '轻舞飞扬'
     });
@@ -18,7 +18,7 @@ class Header extends Component {
     this.getWeatherAPIData();
   }
 
-  getWeatherAPIData() {
+  getWeatherAPIData () {
     let city = 'beijing';
     axios
       .jsonp({
@@ -37,7 +37,7 @@ class Header extends Component {
         }
       });
   }
-  render() {
+  render () {
     const menuType = this.props.menuType;
     return (
       <div className="header">
@@ -48,8 +48,8 @@ class Header extends Component {
               <span>Wendy 通用管理系统</span>
             </Col>
           ) : (
-            ''
-          )}
+              ''
+            )}
           <Col span={menuType ? 18 : 24}>
             <span>欢迎，{this.state.userName}</span>
             <a href="/#">退出</a>
@@ -58,19 +58,19 @@ class Header extends Component {
         {menuType ? (
           ''
         ) : (
-          <Row className="breadcrumb">
-            <Col span={4} className="breadcrumb-title">
-              {this.props.menuName}
-            </Col>
-            <Col span={20} className="breadcrumb-weather">
-              <span className="date">{this.state.sysTime}</span>
-              <span className="weather-img">
-                <img src={this.state.dayPictureUrl} alt="" />
-              </span>
-              <span className="weather-detail">{this.state.weather}</span>
-            </Col>
-          </Row>
-        )}
+            <Row className="breadcrumb">
+              <Col span={4} className="breadcrumb-title">
+                {this.props.menuName}
+              </Col>
+              <Col span={20} className="breadcrumb-weather">
+                <span className="date">{this.state.sysTime}</span>
+                <span className="weather-img">
+                  <img src={this.state.dayPictureUrl} alt="" />
+                </span>
+                <span className="weather-detail">{this.state.weather}</span>
+              </Col>
+            </Row>
+          )}
       </div>
     );
   }

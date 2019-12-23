@@ -14,7 +14,7 @@ class NavLeft extends Component {
       currentKey: ''
     };
   }
-  componentWillMount() {
+  componentDidMount () {
     const menuTreeNode = this.renderMenu(MenuConfig);
     let currentKey = window.location.hash.replace(/#|\?.*$/g, '');
     this.setState({
@@ -46,7 +46,7 @@ class NavLeft extends Component {
       currentKey: key
     });
   };
-  render() {
+  render () {
     return (
       <div>
         <div className="logo">

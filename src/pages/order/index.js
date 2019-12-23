@@ -125,7 +125,7 @@ class Order extends Component {
       });
       return;
     }
-    window.open(`/#/common/order/detail/${item.id}`);
+    window.open(`/common/order/detail/${item.id}`);
   };
   render () {
     const columns = [

@@ -21,6 +21,7 @@ import OperateTable from './pages/table/operateTable';
 import City from './pages/city';
 import Order from './pages/order';
 import User from './pages/user';
+import Permission from './pages/permission';
 import NoMatch from './pages/noMatch';
 
 import Common from './common';
@@ -98,6 +99,7 @@ class IRouter extends Component {
                     <Route path="/admin/city" component={City}></Route>
                     <Route path="/admin/order" component={Order}></Route>
                     <Route path="/admin/user" component={User}></Route>
+                    <Route path="/admin/permission" component={Permission}></Route>
                     <Route component={NoMatch} />
                   </Switch>
                 </Admin>

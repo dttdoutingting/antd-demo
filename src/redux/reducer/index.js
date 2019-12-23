@@ -14,6 +14,8 @@ export default (state = initialState, action) => {
         menuName: action.menuName
       };
     default:
-      return state
+      return {
+        ...state
+      }
   }
 };
