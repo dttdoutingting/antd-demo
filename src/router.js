@@ -40,6 +40,7 @@ class IRouter extends Component {
             <Route path="/login" component={Login} />
             <Route
               path="/common"
+              exact
               render={() => (
                 <Common>
                   <Switch>
@@ -53,53 +54,54 @@ class IRouter extends Component {
               )}
             ></Route>
             <Route
-              path="/admin"
+              path="/"
+              redirect="/home"
               render={() => (
                 <Admin>
                   <Switch>
-                    <Route path="/admin/home" component={Home}></Route>
-                    <Route path="/admin/ui/buttons" component={Buttons}></Route>
-                    <Route path="/admin/ui/modals" component={Modals}></Route>
+                    <Route path="/home" component={Home}></Route>
+                    <Route path="/ui/buttons" component={Buttons}></Route>
+                    <Route path="/ui/modals" component={Modals}></Route>
                     <Route
-                      path="/admin/ui/loadings"
+                      path="/ui/loadings"
                       component={Loadings}
                     ></Route>
                     <Route
-                      path="/admin/ui/notication"
+                      path="/ui/notication"
                       component={Notice}
                     ></Route>
-                    <Route path="/admin/ui/message" component={Message}></Route>
-                    <Route path="/admin/ui/tabs" component={Tabs}></Route>
-                    <Route path="/admin/ui/gallery" component={Gallery}></Route>
+                    <Route path="/ui/message" component={Message}></Route>
+                    <Route path="/ui/tabs" component={Tabs}></Route>
+                    <Route path="/ui/gallery" component={Gallery}></Route>
                     <Route
-                      path="/admin/ui/carousel"
+                      path="/ui/carousel"
                       component={Carousel}
                     ></Route>
                     <Route
-                      path="/admin/form/login"
+                      path="/form/login"
                       component={FormLogin}
                     ></Route>
-                    <Route path="/admin/form/reg" component={Register}></Route>
+                    <Route path="/form/reg" component={Register}></Route>
                     <Route
-                      path="/admin/table/basic"
+                      path="/table/basic"
                       component={BasicTable}
                     ></Route>
                     <Route
-                      path="/admin/table/high"
+                      path="/table/high"
                       component={HighTable}
                     ></Route>
                     <Route
-                      path="/admin/table/sort"
+                      path="/table/sort"
                       component={SortTable}
                     ></Route>
                     <Route
-                      path="/admin/table/operate"
+                      path="/table/operate"
                       component={OperateTable}
                     ></Route>
-                    <Route path="/admin/city" component={City}></Route>
-                    <Route path="/admin/order" component={Order}></Route>
-                    <Route path="/admin/user" component={User}></Route>
-                    <Route path="/admin/permission" component={Permission}></Route>
+                    <Route path="/city" component={City}></Route>
+                    <Route path="/order" component={Order}></Route>
+                    <Route path="/user" component={User}></Route>
+                    <Route path="/permission" component={Permission}></Route>
                     <Route component={NoMatch} />
                   </Switch>
                 </Admin>
