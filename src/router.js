@@ -18,6 +18,9 @@ import BasicTable from './pages/table/basicTable';
 import HighTable from './pages/table/highTable';
 import SortTable from './pages/table/sortTable';
 import OperateTable from './pages/table/operateTable';
+import Bar from './pages/echarts/bar';
+import Pie from './pages/echarts/pie';
+import Line from './pages/echarts/line';
 import City from './pages/city';
 import Order from './pages/order';
 import User from './pages/user';
@@ -77,6 +80,9 @@ class IRouter extends Component {
                       path="/ui/carousel"
                       component={Carousel}
                     ></Route>
+                    <Route path="/charts/bar" component={Bar}></Route>
+                    <Route path="/charts/pie" component={Pie}></Route>
+                    <Route path="/charts/line" component={Line}></Route>
                     <Route
                       path="/form/login"
                       component={FormLogin}

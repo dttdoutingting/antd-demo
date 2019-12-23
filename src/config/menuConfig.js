@@ -78,6 +78,24 @@ const menuList = [
     ]
   },
   {
+    title: 'Echarts',
+    key: '/charts',
+    children: [
+      {
+        title: '柱状图',
+        key: '/charts/bar'
+      },
+      {
+        title: '饼图',
+        key: '/charts/pie'
+      },
+      {
+        title: '折线图',
+        key: '/charts/line'
+      }
+    ]
+  },
+  {
     title: '城市管理',
     key: '/city'
   },
